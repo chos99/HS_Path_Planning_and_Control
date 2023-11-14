@@ -41,6 +41,9 @@ P_display_dt = 40e-3; % sample time of display
 
 %% Speed Controller
 %% TODO
+P_p_kr = 0.344014;
+P_p_Ti = 0.246830;
+P_p_TA = 0.02;
 
 %% Lateral Controller
 %% TODO
