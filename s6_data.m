@@ -41,6 +41,37 @@ P_display_dt = 40e-3; % sample time of display
 
 %% Speed Controller
 %% TODO
+% Gegebene Parameter
+Tm = 1000e-3; % in Sekunden
+omega_D = pi / Tm;
+Tt = 0.1;
+T = 0.316; 
+phi_Res_deg = 65; % Phasenreserve in Grad
+phi_Res_rad = deg2rad(phi_Res_deg); % Phasenreserve in Radian
+
+%% Berechnung von Ti
+% Funktion für die Gesamtphase 
+G0_phase = @(Ti) -atan(omega_D * T) - omega_D * Tt - atan(1 / (omega_D * Ti));
+
+% Lösen der Gleichung für Ti
+Ti = fzero(@(Ti) G0_phase(Ti) + pi - phi_Res_rad, 1); % Startwert ist 1
+
+% Ausgabe des Ergebnisses
+fprintf('Der berechnete Wert für Ti ist: %f Sekunden\n', Ti);
+
+%% Berechnung von kr
+ku = 2.51; % Verstärkung 
+Tm = 1000e-3;
+omega_D = pi / Tm; % Durchtrittsfrequenz % in Sekunden
+
+% Berechnung von kr
+kr = (sqrt(1 + (omega_D * T)^2)) / (ku * sqrt(1 + (1 / (-omega_D * T))^2));
+
+% Ausgabe des Ergebnisses
+fprintf('Der berechnete Wert für kr ist: %f\n', kr);
+
+
+%% Zuweisung der errechneten Werte
 P_p_kr = 0.344014;
 P_p_Ti = 0.246830;
 P_p_TA = 0.02;
