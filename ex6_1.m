@@ -28,9 +28,31 @@ close all;
 % 
 % sys_DSP = filt(sys_z.numerator, sys_z.denominator, Ts)
 
-Ta = 0.02;
-Ti = 0.5
-kr = 0.2
-z = tf('z',Ta)
 
-sys = (kr *Ta * z) / (Ti*z -Ti )
+%% Heikos Idee:
+%inputs:
+vmax = 0.5;     % [m/s] die maximale Geschwindigkeit 𝑣∗ als Parameter vmax
+x0 = 0;         % [m]   die Startposition 𝑥0 als Parameter x0
+xs = 1;         % [m]   die zu fahrende Bogenlänge 𝑥∗ als Parameter xs
+%outputs:
+%   - cff:          Polynomialkoeffizienten u_vp1
+%   - y_p(t)
+%   - w_p_dot(t)
+%   - w_p_dot_dot(t)
+
+[c, te] = cd_refpoly_vmax(vmax, x0, xs);
+cff = cd_refpoly_ff(c,k,P_p_T,P_p_Tt,kr,Ti); 
+
+
+% w_p_dot(te/2) = vmax 
+% oder 
+% w_p_dot(te/2) = (15*xs)/8*te 
+% w_p_dot_dot(t) ???? 
+
+% polyder(p): ableitung von p 
+w_p_dot_dot = polyder(w_p_dot); % stimmt so aber nicht zu 100%, muss noch raus in die richtige vorm gebracht werden... 
+% ... bsp.: x^3 + 2x^2 - 5x +9 -> w_p_dot=[1 2 -5 9] 
+
+% Definition lsim(sys,u,t)  sys: Systemantwort, u; eingangssignal, t: zeit
+y_p = lsim()
+
