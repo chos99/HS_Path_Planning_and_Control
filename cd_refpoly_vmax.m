@@ -9,4 +9,5 @@ function [c, te] = cd_refpoly_vmax(vmax, x0, xs)
 
 te = 15*xs / (8*vmax);
 c = [x0; 0; 0; (10*xs)/(te^3); -(15*xs)/(te^4); (6*xs)/(te^5)];
+%c = [(6*xs)/(te^5);-(15*xs)/(te^4);(10*xs)/(te^3); 0; 0; x0];
 end
