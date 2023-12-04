@@ -53,15 +53,20 @@ Tt = P_p_Tt;
 [c, te] = cd_refpoly_vmax(vmax, x0, xs)
 
 % Simulationszeit definieren
-t = 0:0.05:te; % 10 Sekunden lang von 0 bis 10 mit 0.01 Sekunden Schritten
+% von null bis te 
+t = 0:0.01:te;
+
 
 cff = cd_refpoly_ff(c, ku, T, Tt, kr, Ti);  % ist k = P_p_k??? Fragen!
 
 
-w_p = polyval(cff,t);
-%w_p_dot = polyder(w_p);
-%w_p_dot_dot = polyder(w_p_dot);
-
+w_p = polyval(cff,t)
+figure(1);
+plot(w_p, 'r');
+xlabel('Zeit (s)');
+ylabel('Amplitude');
+title('Soll kurve w_p');
+grid on;
 
 % Übertragungsfunktion definieren für Speed Controller und 1/s block = Positions Regler 
 numerator = [Ti 1];
@@ -72,7 +77,7 @@ G_wp = tf(numerator, denominator);
 [y_p, t_out] = lsim(G_wp, w_p, t);
 
 %Grafische Darstellung der Ergebnisse
-figure;
+figure(2);
 plot(t_out, w_p, 'r', t_out, y_p, 'b--');
 xlabel('Zeit (s)');
 ylabel('Amplitude');
@@ -80,14 +85,30 @@ title('Rampenantwort des kaskadierten Regelkreises');
 legend('w_p(t)', 'y_p(t)');
 grid on;
 
+%Grafische Darstellung der Ergebnisse
+figure(3);
+w_p_dot = polyder(w_p)
+plot(w_p_dot, 'r');
+xlabel('Zeit (s)');
+ylabel('w_p_dot');
+title('tbd');
+grid on;
 
-% w_p_dot(te/2) = vmax 
-% oder 
-% w_p_dot(te/2) = (15*xs)/8*te 
-% w_p_dot_dot(t) ???? 
+%Grafische Darstellung der Ergebnisse
+figure(4);
+w_p_dot_dot = polyder(w_p_dot)
+plot(w_p_dot_dot, 'r');
+xlabel('Zeit (s)');
+ylabel('Amplitude');
+title('w_p_dot_dot');
+grid on;
 
-
-
+figure(5);
+plot(cff, 'rx');
+xlabel('Zeit (s)');
+ylabel('Amplitude');
+title('uvp1 punkte');
+grid on;
 
 
 

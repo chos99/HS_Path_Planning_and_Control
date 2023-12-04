@@ -49,41 +49,60 @@ T = P_p_T;
 Tt = P_p_Tt; 
  
 
-[c, te] = cd_refpoly_vmax(vmax, x0, xs);
-cff = cd_refpoly_ff(c, P_p_k, P_p_T, P_p_Tt, kr, Ti);  % ist k = P_p_k??? Fragen!
+
+[c, te] = cd_refpoly_vmax(vmax, x0, xs)
+
+% Simulationszeit definieren
+% von null bis te 
+t = 0:0.01:te;
 
 
-w_p = polyval(cff,t);
-w_p_dot = polyder(w_p);
-w_p_dot_dot = polyder(w_p_dot);
-%
+cff = cd_refpoly_ff(c, ku, T, Tt, kr, Ti);  % ist k = P_p_k??? Fragen!
 
 
+w_p = polyval(cff,t)
+figure(3);
+w_p_dot = polyder(w_p)
+plot(w_p, 'r');
+xlabel('Zeit (s)');
+ylabel('Amplitude');
+title('tbd');
+grid on;
 
 % Übertragungsfunktion definieren für Speed Controller und 1/s block = Positions Regler 
 numerator = [Ti 1];
 denominator = [(Ti*T*Tt)/(kp*kr*ku) (Ti*(T+Tt))/(kp*kr*ku) Ti/kp*(1 + 1/(kr*ku)) (1/kp + Ti) 1];
 G_wp = tf(numerator, denominator);
 
-% Simulationszeit definieren
-t = 0:0.01:10; % 10 Sekunden lang von 0 bis 10 mit 0.01 Sekunden Schritten
-
-% Rampensignal erzeugen
-w_p = vmax * t;
-
 % Systemantwort simulieren
-y_p = lsim(G_wp, w_p, t);
+[y_p, t_out] = lsim(G_wp, w_p, t);
+
+%Grafische Darstellung der Ergebnisse
+figure(2);
+plot(t_out, w_p, 'r', t_out, y_p, 'b--');
+xlabel('Zeit (s)');
+ylabel('Amplitude');
+title('Rampenantwort des kaskadierten Regelkreises');
+legend('w_p(t)', 'y_p(t)');
+grid on;
+
+figure(3);
+w_p_dot = polyder(w_p)
+plot(w_p_dot, 'r');
+xlabel('Zeit (s)');
+ylabel('Amplitude');
+title('tbd');
+grid on;
+
+figure(4);
+w_p_dot_dot = polyder(w_p_dot)
+plot(w_p_dot_dot, 'r');
+xlabel('Zeit (s)');
+ylabel('Amplitude');
+title('tbd');
+grid on;
 
 
-% w_p_dot(te/2) = vmax 
-% oder 
-% w_p_dot(te/2) = (15*xs)/8*te 
-% w_p_dot_dot(t) ???? 
 
-
-
-
-
-% Definition lsim(sys,u,t)  sys: Systemantwort, u; eingangssignal, t: zeit
 
 
