@@ -1,4 +1,4 @@
-function cff = cd_refpoly_ff(c,k,P_p_T,P_p_Tt,kr,Ti)
+function cff = cd_refpoly_ff(c,k,T,Tt,kr,Ti)
 % Inputs:
 %   - c:            Polynomialkoeffizienten --> aus funktion "cd_refpoly_vmax.m"
 %   -               𝑘
@@ -10,10 +10,6 @@ function cff = cd_refpoly_ff(c,k,P_p_T,P_p_Tt,kr,Ti)
 % Outputs.
 %   - cff:  𝑢_V1(𝑡) Polynomialkoeffizienten
 
-% WIE BEKOMMEN WIR HIER DIE ZEIT t REIN? => IDEE: DA DIE MATLABFUNKTION IN
-% EIN SIMULINK BLOCK GEHT; EINFACH CLOCK ALS INPUT ADDEN; MEINUNG?
-% Simulationszeit definieren
-
 
 % cff = (c(6).*t.^5) + (c(5)+5*Ti*c(6)* ((1/(k*kr))+1) ).*t.^4 + ...
 %     (c(4) + 4*Ti*c(5)* ((1/(k*kr))+1) + (20*Ti*c(6) * (P_p_T+P_p_Tt))/ (k*kr) ) *t.^3 + ...
@@ -21,11 +17,11 @@ function cff = cd_refpoly_ff(c,k,P_p_T,P_p_Tt,kr,Ti)
 %     (c(2) + 2*Ti*c(3)* ((1/(k*kr))+1) + ( 6*Ti*c(4) * (P_p_T+P_p_Tt))/ (k*kr) + (24*P_p_T* Ti* P_p_Tt*c(5)) / (k*kr) ) .* t + ...
 %     c(1) + Ti*c(2)* ((1/(k*kr))+1)    + ( 2*Ti*c(3) * (P_p_T+P_p_Tt))/ (k*kr) + ( 6*P_p_T* Ti* P_p_Tt*c(4)) / (k*kr);
 
-
+c = flip(c, 1); % damit c(6) das oberste Element aus c ist
 cff = [c(6);
-     (c(5)+5*Ti*c(6)* ((1/(k*kr))+1) );
-     (c(4) + 4*Ti*c(5)* ((1/(k*kr))+1) + (20*Ti*c(6) * (P_p_T+P_p_Tt))/ (k*kr));
-     (c(3) + 3*Ti*c(4)* ((1/(k*kr))+1) + (12*Ti*c(5) * (P_p_T+P_p_Tt))/ (k*kr) + (60*P_p_T* Ti* P_p_Tt*c(6)) / (k*kr) );
-     (c(2) + 2*Ti*c(3)* ((1/(k*kr))+1) + ( 6*Ti*c(4) * (P_p_T+P_p_Tt))/ (k*kr) + (24*P_p_T* Ti* P_p_Tt*c(5)) / (k*kr) );
-     c(1) + Ti*c(2)* ((1/(k*kr))+1)    + ( 2*Ti*c(3) * (P_p_T+P_p_Tt))/ (k*kr) + ( 6*P_p_T* Ti* P_p_Tt*c(4)) / (k*kr)]
+     (c(5) +5*Ti*c(6) * ((1/(k*kr))+1) );
+     (c(4) + 4*Ti*c(5)* ((1/(k*kr))+1) + (20*Ti*c(6) * (T+Tt))/ (k*kr));
+     (c(3) + 3*Ti*c(4)* ((1/(k*kr))+1) + (12*Ti*c(5) * (T+Tt))/ (k*kr) + (60*T* Ti* Tt*c(6)) / (k*kr) );
+     (c(2) + 2*Ti*c(3)* ((1/(k*kr))+1) + ( 6*Ti*c(4) * (T+Tt))/ (k*kr) + (24*T* Ti* Tt*c(5)) / (k*kr) );
+     (c(1) + Ti*c(2)  * ((1/(k*kr))+1)    + ( 2*Ti*c(3) * (T+Tt))/ (k*kr) + ( 6*T* Ti* Tt*c(4)) / (k*kr))];
 end
