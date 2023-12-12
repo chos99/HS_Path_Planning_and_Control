@@ -70,8 +70,8 @@ kr = (sqrt(1 + (omega_D * T)^2)) / (ku * sqrt(1 + (1 / (-omega_D * T))^2));
 % Ausgabe des Ergebnisses
 fprintf('Der berechnete Wert für kr ist: %f\n', kr);
 
-% Berechnung G_RP --> Verstärkung kp
-P_cx_k = 8.5;
+% Berechnung G_RP --> Verstärkung kp vom äußeren RK
+P_cx_k = 1;
 
 
 %% Zuweisung der errechneten Werte
