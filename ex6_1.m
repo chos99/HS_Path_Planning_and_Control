@@ -67,7 +67,7 @@ G0 = GR * GS;
 Gw = feedback(G0, 1);
 
 G_vp1_s = tf([1, 0], [Ti, 1]);
-G_vp1_z = c2d(G_vp1_s, TA, 'tustin');
+G_vp1_z = c2d(G_vp1_s, TA, 'tustin')
 
 yp = lsim(minreal(G_vp1_s * Gw / s), uvp1, t);
 
