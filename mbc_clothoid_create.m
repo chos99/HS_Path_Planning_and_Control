@@ -42,22 +42,19 @@ xe = sqrt(tau*2*a^2); % path length (siehe Formel https://www.frassek.org/2d-mat
 xe = sqrt(2*abs(rad) / a);
 
 % Aufstellen der Gleichungen abhängig von opening
-a = -a * sign(rad);  % Links- oder Rechtskurve ACHTUNG: WIR WISSEN NICHT ob - links oder rechts ist!!!!!!
+a = a * sign(rad);  
 if opening == 1
-    % s1_s2_func = @(x) [cos(-a/2 * x^2 + a*xe*x + p.psi);
-    %                    sin(-a/2 * x^2 + a*xe*x + p.psi)];
+
     s1_func = @(x) cos(-a/2 * x.^2 + a*xe.*x + p.psi);
     s2_func = @(x) sin(-a/2 * x.^2 + a*xe.*x + p.psi);
 else
-    % s1_s2_func = @(x) [cos(a/2 * x^2 + p.psi);
-    %                    sin(a/2 * x^2 + p.psi)];
     s1_func = @(x) cos(a/2 * x.^2 + p.psi);
     s2_func = @(x) sin(a/2 * x.^2 + p.psi);
 end
 
 % Berechnung Fresnel-Integral
-s1_integ = integral(s1_func, p.x, xe);
-s2_integ = integral(s2_func, p.x, xe);
+s1_integ = integral(s1_func, 0, xe);    % Start: p.x
+s2_integ = integral(s2_func, 0, xe);    % Start: p.x
 
 s1 = s1_integ + p.s1;
 s2 = s2_integ + p.s2;
