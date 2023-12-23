@@ -58,6 +58,9 @@ for idx = 1:mbc_track_get_cnt(track)
     x = newpoints(1, end) + dx;
     points = [ points newpoints ];
 end
+####%
+####%
+####%
 if track.periodic
     % We have a circular track.
     % Ensure last point equals to first point.

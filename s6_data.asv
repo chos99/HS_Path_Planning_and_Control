@@ -116,20 +116,27 @@ P_width = 0.2; % track P_width [ m ]
 a = 8;
 
 track = mbc_track_create(0.15, 0.9, -pi/2);
-track = mbc_straight_create(track, (a2 - 2 * P_width)/2 - 0.43, P_width);
+track = mbc_straight_create(track, (a2 - 2 * P_width)/2 - 0.4625, P_width);
 turn = 1;   % Linkskurve
 track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 0);
 track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 1);
+
 track = mbc_straight_create(track, a1 - 2 * P_width -0.855, P_width);
+
 track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 0);
 track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 1);
-track = mbc_straight_create(track, a2 - 2 * P_width - 0.86, P_width);
+
+track = mbc_straight_create(track, a2 - 2 * P_width - -0.7850, P_width);
+
 track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 0);
 track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 1);
-track = mbc_straight_create(track, a1 - 2 * P_width -0.855, P_width); 
+
+track = mbc_straight_create(track, a1 - 2 * P_width -0.855, P_width);
+
 track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 0);
 track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 1);
-track = mbc_straight_create(track, (a2 - 2 * P_width)/2 - 0.43, P_width);
+track = mbc_straight_create(track, (a2 - 2 * P_width)/2 - 0.4625, P_width);
+
 track = mbc_track_display(track, 0.1, [ 0 a1total 0 a2total ]);
 path = track.center;
 
