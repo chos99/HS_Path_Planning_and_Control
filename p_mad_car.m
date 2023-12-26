@@ -98,7 +98,7 @@ P_p_psistd = deg2rad(1); % [ rad ];
 P_p_Tt = P_p_uTt + P_p_output_Tt;
 
 %% Initial Conditions
-P_p_v0 = 0.0;   % speed [ m/s ]
+P_p_v0 = 0;   % speed [ m/s ]
 P_p_s10 = 1.7;  % s1 position [ m ] Carid 0
 P_p_s20 = 1.7;  % s2 position [ m ] Carid 0
 P_p_s11 = 0.4;  % s1 position [ m ] Carid 1

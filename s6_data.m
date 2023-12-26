@@ -81,6 +81,7 @@ P_p_TA = 0.02;
 
 %% Lateral Controller
 %% TODO
+P_p_Tw = 0.3;
 
 %% Create Race Track
 % a1total = 2.7; % total surface width [ m ]
