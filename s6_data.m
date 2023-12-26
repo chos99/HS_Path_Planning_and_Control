@@ -31,6 +31,10 @@ global P_dt P_display_dt;
 %% Car and Belt Configuration
 p_mad_car;
 
+%% Initial Car State
+P_p_s1_start = 0.63;
+P_p_s2_start = 0.15;
+
 %% Sample Times
 P_dt = 20e-3; % sample time of controller
 P_sim_dt = 2e-3; % sample time of simulation
