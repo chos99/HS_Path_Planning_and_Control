@@ -88,27 +88,27 @@ P_p_TA = 0.02;
 P_p_Tw = 0.3;
 
 %% Create Race Track
-% a1total = 2.7; % total surface width [ m ]
-% a2total = 1.8; % total surface height [ m ]
-% a1boundary = 0.05; % margin [ m ]
-% a2boundary = 0.05; % margin [ m ]
-% a1 = a1total - 2 * a1boundary; % total surface width [ m ]
-% a2 = a2total - 2 * a2boundary; % total surface height [ m ]
-% P_width = 0.25 * a2; % track P_width [ m ]
-% 
-% track = mbc_track_create(a1boundary + P_width, a2boundary + 0.5 * P_width, 0);
-% track = mbc_straight_create(track, a1 - 2 * P_width, P_width);
-% track = mbc_circle_create(track, 0.5 * P_width, pi, P_width);
-% track = mbc_straight_create(track, a1 - 3 * P_width, P_width);
-% track = mbc_circle_create(track, 0.5 * P_width, -pi, P_width);
-% track = mbc_straight_create(track, a1 - 3 * P_width, P_width);
-% track = mbc_circle_create(track, 0.5 * P_width, pi, P_width);
-% track = mbc_straight_create(track, a1 - 2 * P_width, P_width);
-% track = mbc_circle_create(track, 0.5 * P_width, 0.5 * pi, P_width);
-% track = mbc_straight_create(track, a2 - 2 * P_width, P_width);
-% track = mbc_circle_create(track, 0.5 * P_width, 0.5 * pi, P_width);
-% track = mbc_track_display(track, 0.1, [ 0 a1total 0 a2total ]);
-% path = track.center;
+a1total = 2.7; % total surface width [ m ]
+a2total = 1.8; % total surface height [ m ]
+a1boundary = 0.05; % margin [ m ]
+a2boundary = 0.05; % margin [ m ]
+a1 = a1total - 2 * a1boundary; % total surface width [ m ]
+a2 = a2total - 2 * a2boundary; % total surface height [ m ]
+P_width = 0.25 * a2; % track P_width [ m ]
+
+track = mbc_track_create(a1boundary + P_width, a2boundary + 0.5 * P_width, 0);
+track = mbc_straight_create(track, a1 - 2 * P_width, P_width);
+track = mbc_circle_create(track, 0.5 * P_width, pi, P_width);
+track = mbc_straight_create(track, a1 - 3 * P_width, P_width);
+track = mbc_circle_create(track, 0.5 * P_width, -pi, P_width);
+track = mbc_straight_create(track, a1 - 3 * P_width, P_width);
+track = mbc_circle_create(track, 0.5 * P_width, pi, P_width);
+track = mbc_straight_create(track, a1 - 2 * P_width, P_width);
+track = mbc_circle_create(track, 0.5 * P_width, 0.5 * pi, P_width);
+track = mbc_straight_create(track, a2 - 2 * P_width, P_width);
+track = mbc_circle_create(track, 0.5 * P_width, 0.5 * pi, P_width);
+track = mbc_track_display(track, 0.1, [ 0 a1total 0 a2total ]);
+path = track.center;
 
 %% Exercise 8.3.2. Create Race Track according to Abbildung 84
 a1total = 2.7; % total surface width [ m ]
@@ -120,23 +120,23 @@ a2 = a2total - 2 * a2boundary; % total surface height [ m ]
 P_width = 0.2; % track P_width [ m ]
 a = 8;
 
-track = mbc_track_create(0.15, 0.9, -pi/2);
-track = mbc_straight_create(track, (a2 - 2 * P_width)/2 - 0.43, P_width);
-turn = 1;   % Linkskurve
-track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 0);
-track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 1);
-track = mbc_straight_create(track, a1 - 2 * P_width -0.855, P_width);
-track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 0);
-track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 1);
-track = mbc_straight_create(track, a2 - 2 * P_width - 0.86, P_width);
-track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 0);
-track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 1);
-track = mbc_straight_create(track, a1 - 2 * P_width -0.855, P_width); 
-track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 0);
-track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 1);
-track = mbc_straight_create(track, (a2 - 2 * P_width)/2 - 0.43, P_width);
-track = mbc_track_display(track, 0.1, [ 0 a1total 0 a2total ]);
-path = track.center;
+% track = mbc_track_create(0.15, 0.9, -pi/2);
+% track = mbc_straight_create(track, (a2 - 2 * P_width)/2 - 0.43, P_width);
+% turn = 1;   % Linkskurve
+% track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 0);
+% track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 1);
+% track = mbc_straight_create(track, a1 - 2 * P_width -0.855, P_width);
+% track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 0);
+% track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 1);
+% track = mbc_straight_create(track, a2 - 2 * P_width - 0.86, P_width);
+% track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 0);
+% track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 1);
+% track = mbc_straight_create(track, a1 - 2 * P_width -0.855, P_width); 
+% track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 0);
+% track = mbc_clothoid_create(track, a, turn * pi / 4, P_width, 1);
+% track = mbc_straight_create(track, (a2 - 2 * P_width)/2 - 0.43, P_width);
+% track = mbc_track_display(track, 0.1, [ 0 a1total 0 a2total ]);
+% path = track.center;
 
 
 %% Path for Lap Statistics

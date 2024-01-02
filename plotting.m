@@ -25,7 +25,7 @@ fontSize = 14;  % You can adjust this value as needed
 % Set labels and title with a custom font size
 xlabel('Time (seconds)', 'FontSize', fontSize);
 ylabel('m', 'FontSize', fontSize);
-title('Reference position wp(t) and actual position yp(t)=𝑥(𝑡) for xManeuverEnd=0.5 and vmax=1', 'FontSize', fontSize);
+title('Reference position wp(t) and actual position yp(t)=x(t) for xManeuverEnd=0.5 and vmax=1', 'FontSize', fontSize);
 
 % Add legend to clarify which line is which
 legend('Reference position wp(t)', 'Actual position yp(t)');
