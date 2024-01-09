@@ -1,0 +1,7 @@
+- Rauschen(nois) auf ist geschwindigkeit 
+
+- bei zu großer änderung von V_soll zu v_soll2 wird eine rampe verwendet und langsam erhöht/verringert
+
+PT1 dynamic vor unerer Rampenblock Diskreter TP 1. Odnung 
+P = 1
+T = 1s
