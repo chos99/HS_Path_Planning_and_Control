@@ -61,6 +61,8 @@ Gw = feedback(G0, 1);
 % Plotting the step response
 figure;
 step(Gw);
+xlabel("time", "FontSize", 12)
+ylabel("speed (m/s)", "FontSize", 12)
 grid on;
 
 % Calculation of overshoot and settling time

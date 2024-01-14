@@ -1,22 +1,23 @@
 close all;
 
+plot(psi_test)
 % Extract signals from the dataset
-wp_signal = wp_yp_plot.get(1).Values;  % Assuming the reference position signal is the first element
-yp_signal = wp_yp_plot.get(2).Values;  % Assuming the actual position signal is the second element
+t = psi_test.get(1).Values;  % Assuming the reference position signal is the first element
+psi = psi_test.get(2).Values;  % Assuming the actual position signal is the second element
 
 % Check the size of the signal data
-wp_size = size(wp_signal.Data);
-yp_size = size(yp_signal.Data);
+wp_size = size(t.Data);
+yp_size = size(psi.Data);
 
-wp_data = squeeze(wp_signal.Data);  % Removes the singleton dimensions
-yp_data = squeeze(yp_signal.Data);  % Removes the singleton dimensions
+wp_data = squeeze(t.Data);  % Removes the singleton dimensions
+yp_data = squeeze(psi.Data);  % Removes the singleton dimensions
 
 % Open a new figure
 figure(1), clf;
 
 % Plot the signals
 % Plotting the first dimension against the second
-plot(wp_signal.Time, wp_data, yp_signal.Time, yp_data);
+plot(t.Time, wp_data, psi.Time, yp_data);
 grid on;
 
 % Set font sizes
